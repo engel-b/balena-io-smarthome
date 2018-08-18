@@ -7,7 +7,7 @@ To get this project up and running, you'll need to [sign up](https://dashboard.r
 *Note: Multicontainer functionality requires resinOS v2.12.0 or higher. If you do not see an option to choose a microservices or starter application type, a supported OS version has not yet been released for the selected device type.*
 
 Once you are set up, clone this repo locally:
-```
+``` 
 $ git clone git@github.com:resin-io-projects/multicontainer-getting-started.git
 ```
 Copy the command in the upper-right corner of your application dashboard to add your remote repository:
