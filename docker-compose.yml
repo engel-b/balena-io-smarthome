@@ -3,7 +3,11 @@ services:
   frontend:
     build: ./frontend
     expose:
-      - "80"
+    - "80"
+  owfs:
+    build: ./owfs
+    expose:
+    - "4304"
   proxy:
     build: ./haproxy
     depends_on:
