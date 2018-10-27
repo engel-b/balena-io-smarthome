@@ -13,7 +13,6 @@ RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositor
 
 RUN git clone https://github.com/owfs/owfs owfs-code
 
-
 RUN cd owfs-code; \
     git pull; \
     ./bootstrap; \
@@ -28,7 +27,7 @@ MAINTAINER Björn Engel<justcoke@gmail.com>
 
 COPY --from=owfsbuilder /opt/owfs /opt/owfs
 COPY owfs.conf /etc/owfs.conf
-COPY owfs-wrapper.sh /app.sh
+COPY app.sh /app.sh
 
 RUN apk add --update fuse libftdi1 libusb
 

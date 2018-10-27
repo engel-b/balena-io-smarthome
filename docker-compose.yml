@@ -1,21 +1,31 @@
 version: '2'
 services:
-  frontend:
-    build: ./frontend
-    expose:
-    - "80"
+  asterisk:
+    build: ./asterisk
+    network_mode: host
+    tty: true
+    volumes:
+    - '/etc/localtime:/etc/localtime:ro'
+    - '/etc/timezone:/etc/timezone:ro'
+    - '/data/asterisk/conf:/etc/asterisk:ro'
+    - '/data/asterisk/hello-world.gsm:/var/lib/asterisk/sounds/hello-world.gsm:ro'
   owfs:
     build: ./owfs
+    network_mode: host
     expose:
     - "4304"
-  proxy:
-    build: ./haproxy
-    depends_on:
-      - frontend
-      - data
-    ports:
-      - "80:80"
-  data:
-    build: ./data
+    volumes:
+    - '/data/owfs/owfs.conf:/etc/owfs.conf:ro'
+  openhab2:
+    image: openhab/openhab:2.3.0-amd64-debian
+    network_mode: host
+    tty: true
     expose:
       - "8080"
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+      - '/etc/timezone:/etc/timezone:ro'
+      - '/data/openhab/conf:/openhab/conf:ro'
+      - '/data/openhab/userdata:/openhab/userdata:rw'
+      - '/data/openhab/addons:/openhab/addons:ro'
+      - '/data/openhab/.java:/openhab/.java'
