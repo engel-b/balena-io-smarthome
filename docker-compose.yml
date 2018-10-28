@@ -34,8 +34,7 @@ services:
     - 'owfs:/data/owfs:ro'
 
   openhab2:
-    build: openhab
-    image: openhab/openhab:2.3.0-amd64-debian
+    build: ./openhab
     depends_on:
     - config
     network_mode: host
