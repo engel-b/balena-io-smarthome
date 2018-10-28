@@ -24,7 +24,7 @@ services:
     expose:
       - "4304"
     volumes:
-      - 'owfs-conf/owfs.conf:/etc/owfs.conf:ro'
+      - 'owfs-conf:/etc/owfs.conf:ro'
 
   openhab2:
     image: openhab/openhab:2.3.0-amd64-debian
@@ -36,4 +36,3 @@ services:
       - 'openhab-conf:/openhab/conf:ro'
       - 'openhab-userdata:/openhab/userdata:rw'
       - 'openhab-addons:/openhab/addons:ro'
-#      - 'openhab/.java:/openhab/.java'
