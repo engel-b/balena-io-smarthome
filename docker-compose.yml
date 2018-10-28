@@ -1,21 +1,31 @@
 version: '2'
+
+# Registration of named volumes
+volumes:
+  asterisk-conf:
+  asterisk-sounds:
+  owfs-conf:
+  openhab-conf:
+  openhab-userdata:
+  openhab-addons:
+
 services:
   asterisk:
     build: ./asterisk
     network_mode: host
     tty: true
     volumes:
-    - '/etc/localtime:/etc/localtime:ro'
-    - '/etc/timezone:/etc/timezone:ro'
-    - '/mnt/data/resin-data/asterisk/conf:/etc/asterisk:ro'
-    - '/mnt/data/resin-data/asterisk/hello-world.gsm:/var/lib/asterisk/sounds/hello-world.gsm:ro'
+      - 'asterisk-conf:/etc/asterisk:ro'
+      - 'asterisk-sounds:/var/lib/asterisk/sounds:ro'
+
   owfs:
     build: ./owfs
     network_mode: host
     expose:
-    - "4304"
+      - "4304"
     volumes:
-    - '/mnt/data/resin-data/owfs/owfs.conf:/etc/owfs.conf:ro'
+      - 'owfs-conf/owfs.conf:/etc/owfs.conf:ro'
+
   openhab2:
     image: openhab/openhab:2.3.0-amd64-debian
     network_mode: host
@@ -23,9 +33,7 @@ services:
     expose:
       - "8080"
     volumes:
-      - '/etc/localtime:/etc/localtime:ro'
-      - '/etc/timezone:/etc/timezone:ro'
-      - '/mnt/data/resin-data/openhab/conf:/openhab/conf:ro'
-      - '/mnt/data/resin-data/openhab/userdata:/openhab/userdata:rw'
-      - '/mnt/data/resin-data/openhab/addons:/openhab/addons:ro'
-      - '/mnt/data/resin-data/openhab/.java:/openhab/.java'
+      - 'openhab-conf:/openhab/conf:ro'
+      - 'openhab-userdata:/openhab/userdata:rw'
+      - 'openhab-addons:/openhab/addons:ro'
+#      - 'openhab/.java:/openhab/.java'
