@@ -3,24 +3,24 @@ MAINTAINER Björn Engel<justcoke@gmail.com>
 
 # asterisk
 # 'asterisk:/data/asterisk:rw'
-RUN 'mkdir -p /data/asterisk/conf'
+RUN mkdir -p /data/asterisk/conf
 COPY asterisk/conf/* /data/asterisk/conf/.
 
-RUN 'mkdir -p /data/asterisk/sounds'
+RUN mkdir -p /data/asterisk/sounds
 COPY asterisk/sounds/* /data/asterisk/sounds/.
 
 # owfs
 # 'owfs:/data/owfs:rw'
-RUN 'mkdir -p /data/owfs/conf'
+RUN mkdir -p /data/owfs/conf
 COPY owfs/conf/* /data/owfs/conf/.
 
 # openhab
 # 'openhab:/data/openhab:rw'
-RUN 'mkdir -p /data/openhab/addon'
+RUN mkdir -p /data/openhab/addon
 COPY openhab/addon/* /data/openhab/addon/.
 
-RUN 'mkdir -p /data/openhab/conf'
+RUN mkdir -p /data/openhab/conf
 COPY openhab/conf/* /data/openhab/conf/.
 
-RUN 'mkdir -p /data/openhab/userdata'
+RUN mkdir -p /data/openhab/userdata
 COPY openhab/userdata/* /data/openhab/userdata/.
