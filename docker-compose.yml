@@ -2,37 +2,45 @@ version: '2'
 
 # Registration of named volumes
 volumes:
-  asterisk-conf:
-  asterisk-sounds:
-  owfs-conf:
-  openhab-conf:
-  openhab-userdata:
-  openhab-addons:
+  asterisk:
+  owfs:
+  openhab:
 
 services:
+  config:
+    build: ./config
+    volumes:
+    - 'asterisk:/data/asterisk:rw'
+    - 'owfs:/data/owfs:rw'
+    - 'openhab:/data/openhab:rw'
+
   asterisk:
     build: ./asterisk
+    depends_on:
+    - config
     network_mode: host
     tty: true
     volumes:
-      - 'asterisk-conf:/etc/asterisk:ro'
-      - 'asterisk-sounds:/var/lib/asterisk/sounds:ro'
+    - 'asterisk:/data/asterisk:ro'
 
   owfs:
     build: ./owfs
+    depends_on:
+    - config
     network_mode: host
     expose:
-      - "4304"
+    - "4304"
     volumes:
-      - 'owfs-conf:/etc/owfs.conf:ro'
+    - 'owfs:/data/owfs:ro'
 
   openhab2:
+    build: openhab
     image: openhab/openhab:2.3.0-amd64-debian
+    depends_on:
+    - config
     network_mode: host
     tty: true
     expose:
-      - "8080"
+    - "8080"
     volumes:
-      - 'openhab-conf:/openhab/conf:ro'
-      - 'openhab-userdata:/openhab/userdata:rw'
-      - 'openhab-addons:/openhab/addons:ro'
+    - 'openhab:/data/openhab:ro'
