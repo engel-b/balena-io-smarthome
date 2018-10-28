@@ -4,10 +4,10 @@ MAINTAINER Björn Engel<justcoke@gmail.com>
 # asterisk
 # 'asterisk:/data/asterisk:rw'
 RUN mkdir -p /data/asterisk/conf
-COPY asterisk/conf/* /data/asterisk/conf/.
+COPY asterisk/conf/* /data/asterisk/conf/
 
 RUN mkdir -p /data/asterisk/sounds
-COPY asterisk/sounds/* /data/asterisk/sounds/.
+COPY asterisk/sounds/* /data/asterisk/sounds/
 
 # owfs
 # 'owfs:/data/owfs:rw'
