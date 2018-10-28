@@ -12,15 +12,15 @@ COPY asterisk/sounds/* /data/asterisk/sounds/.
 # owfs
 # 'owfs:/data/owfs:rw'
 RUN mkdir -p /data/owfs/conf
-COPY owfs/conf/* /data/owfs/conf/.
+COPY owfs/conf/* /data/owfs/conf/
 
 # openhab
 # 'openhab:/data/openhab:rw'
 RUN mkdir -p /data/openhab/addon
-COPY openhab/addon/* /data/openhab/addon/.
+COPY openhab/addon/* /data/openhab/addon/
 
 RUN mkdir -p /data/openhab/conf
-COPY openhab/conf/* /data/openhab/conf/.
+COPY openhab/conf/* /data/openhab/conf/
 
 RUN mkdir -p /data/openhab/userdata
-COPY openhab/userdata/* /data/openhab/userdata/.
+COPY openhab/userdata/* /data/openhab/userdata/
