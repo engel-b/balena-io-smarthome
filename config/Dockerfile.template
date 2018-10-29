@@ -26,7 +26,6 @@ RUN mkdir -p /config/openhab/userdata
 COPY openhab/userdata /config/openhab/userdata
 
 COPY app.sh /app.sh
+RUN chmod 777 /app.sh
 
-#CMD ["/app.sh"]
-
-CMD ["sh"]
+CMD ["/app.sh"]

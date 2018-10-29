@@ -28,6 +28,7 @@ MAINTAINER Björn Engel<justcoke@gmail.com>
 COPY --from=owfsbuilder /opt/owfs /opt/owfs
 RUN ln -s /data/owfs/conf/owfs.conf /etc/owfs.conf
 COPY app.sh /app.sh
+RUN chmod 777 /app.sh
 
 RUN apk add --update fuse libftdi1 libusb
 

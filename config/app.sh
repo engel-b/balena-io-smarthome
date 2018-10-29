@@ -1,5 +1,5 @@
 #!/bin/sh
 
-cp /config/asterisk/* /data/asterisk/.
-cp /config/owfs/* /data/owfs/.
-cp /config/openhab/* /data/openhab/.
+cp -r /config/asterisk/* /data/asterisk/.
+cp -r /config/owfs/* /data/owfs/.
+cp -r /config/openhab/* /data/openhab/.
