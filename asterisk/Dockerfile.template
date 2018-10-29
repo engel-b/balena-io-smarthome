@@ -5,6 +5,7 @@ RUN apk add --update less curl sngrep ngrep \
       asterisk asterisk-curl asterisk-speex \
 &&  rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
+RUN rmdir /etc/asterisk
 RUN ln -s /data/asterisk/conf/ /etc/asterisk
 RUN ln -s /data/asterisk/sounds/ /var/lib/asterisk/sounds
 
