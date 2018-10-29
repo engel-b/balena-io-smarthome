@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Start the first process: owserver
 /opt/owfs/owserver -c /etc/owfs.conf
