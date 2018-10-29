@@ -33,13 +33,13 @@ services:
     volumes:
     - 'owfs:/data/owfs:ro'
 
-  openhab2:
-    build: ./openhab
-    depends_on:
-    - config
-    network_mode: host
-    tty: true
-    expose:
-    - "8080"
-    volumes:
-    - 'openhab:/data/openhab:ro'
+#  openhab2:
+#    build: ./openhab
+#    depends_on:
+#    - config
+#    network_mode: host
+#    tty: true
+#    expose:
+#    - "8080"
+#    volumes:
+#    - 'openhab:/data/openhab:rw'

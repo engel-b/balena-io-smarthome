@@ -32,4 +32,5 @@ RUN chmod 777 /app.sh
 
 RUN apk add --update fuse libftdi1 libusb
 
-CMD ["/app.sh"]
+#CMD ["/app.sh"]
+CMD ["sh"]
