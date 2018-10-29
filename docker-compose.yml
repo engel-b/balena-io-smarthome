@@ -19,7 +19,6 @@ services:
     depends_on:
     - config
     network_mode: host
-    tty: true
     volumes:
     - 'asterisk:/data/asterisk:ro'
 
