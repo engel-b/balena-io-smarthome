@@ -5,8 +5,8 @@ RUN apk add --update less curl sngrep ngrep \
       asterisk asterisk-curl asterisk-speex \
 &&  rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
-RUN ln -s /data/asterisk/conf /etc/asterisk
-RUN ln -s /data/asterisk/sounds /var/lib/asterisk/sounds
+RUN ln -s /data/asterisk/conf/ /etc/asterisk
+RUN ln -s /data/asterisk/sounds/ /var/lib/asterisk/sounds
 
 # start asterisk so it creates missing folders and initializes astdb
 RUN asterisk && sleep 5
