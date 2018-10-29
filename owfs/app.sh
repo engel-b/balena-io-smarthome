@@ -29,8 +29,12 @@ while sleep 60; do
   OWHTTPD_STATUS=$?
   # If the greps above find anything, they exit with 0 status
   # If they are not both 0, then something is wrong
-  if [ $OWSERVER_STATUS -ne 0 -o $OWHTTPD_STATUS -ne 0 ]; then
-    echo "One of the owfs-processes has already exited."
+  if [ $OWSERVER_STATUS -ne 0 ]; then
+    echo "owserver-process has already exited."
+    exit 1
+  fi
+  if [ $OWHTTPD_STATUS -ne 0 ]; then
+    echo "owhttpd-process has already exited."
     exit 1
   fi
 done
