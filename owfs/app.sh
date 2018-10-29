@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Start the first process: owserver
-/opt/owfs/owserver -c /etc/owfs.conf
+/opt/owfs/bin/owserver -c /etc/owfs.conf
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start 'owserver': $status"
@@ -9,7 +9,7 @@ if [ $status -ne 0 ]; then
 fi
 
 # Start the second process: owhttpd
-/opt/owfs/owhttpd -c /etc/owfs.conf
+/opt/owfs/bin/owhttpd -c /etc/owfs.conf
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start 'owhttpd': $status"
