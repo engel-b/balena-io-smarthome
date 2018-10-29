@@ -27,4 +27,6 @@ COPY openhab/userdata /config/openhab/userdata
 
 COPY app.sh /app.sh
 
-CMD ["/app.sh"]
+#CMD ["/app.sh"]
+
+CMD ["sh"]
