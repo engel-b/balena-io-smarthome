@@ -5,6 +5,7 @@ volumes:
   asterisk:
   mosquitto:
   owfs:
+  pihole:
   signal:
   openhab:
 
@@ -17,6 +18,7 @@ services:
     - 'openhab:/data/openhab:rw'
     - 'mosquitto:/data/mosquitto:rw'
     - 'signal:/data/signal:rw'
+    - 'pihole:/data/pihole:rw'
 
   asterisk:
     build: ./asterisk
