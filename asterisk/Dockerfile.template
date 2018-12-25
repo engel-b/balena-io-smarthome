@@ -10,9 +10,9 @@ RUN ln -s /data/asterisk/conf/ /etc/asterisk
 RUN ln -s /data/asterisk/sounds/ /var/lib/asterisk/sounds
 
 # start asterisk so it creates missing folders and initializes astdb
-RUN asterisk && sleep 6
+RUN asterisk && sleep 5
 
 ADD entrypoint.sh /entrypoint.sh
 
-ENTRYPOINT ["/entrypoint.sh"]
+#ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/usr/sbin/asterisk", "-vvvdddf", "-T", "-W", "-U", "root", "-p"]
