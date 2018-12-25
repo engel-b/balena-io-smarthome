@@ -8,6 +8,7 @@ volumes:
   pihole:
   signal:
   openhab:
+  status:
 
 services:
   config:
@@ -19,6 +20,7 @@ services:
     - 'mosquitto:/data/mosquitto:rw'
     - 'signal:/data/signal:rw'
     - 'pihole:/data/pihole:rw'
+    - 'status:/data/status:rw'
 
   asterisk:
     build: ./asterisk
@@ -82,3 +84,10 @@ services:
     - "8080"
     volumes:
     - 'openhab:/data/openhab:rw'
+
+  status:
+    image: tobilg/mini-webserver
+    ports:
+    - "80:3000"
+    volumes:
+    - 'status:/app/public:rw'
