@@ -1,4 +1,4 @@
-FROM resin/%%RESIN_ARCH%%-alpine:edge
+FROM resin/%%BALENA_ARCH%%-alpine:edge
 MAINTAINER Björn Engel<justcoke@gmail.com>
 
 # asterisk
