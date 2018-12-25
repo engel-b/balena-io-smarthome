@@ -1,2 +1,8 @@
 FROM pihole/pihole:latest
 MAINTAINER Björn Engel<justcoke@gmail.com>
+
+RUN cp /etc/pihole /data/pihole/s/pihole
+RUN cp /etc/dnsmasq.d /data/pihole/s/dnsmasq.d
+
+RUN ln -s /data/pihole/pihole /etc/pihole
+RUN ln -s /data/pihole/dnsmasq.d /etc/dnsmasq.d

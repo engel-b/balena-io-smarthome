@@ -15,6 +15,8 @@ services:
     - 'asterisk:/data/asterisk:rw'
     - 'owfs:/data/owfs:rw'
     - 'openhab:/data/openhab:rw'
+    - 'mosquitto:/data/mosquitto:rw'
+    - 'signal:/data/signal:rw'
 
   asterisk:
     build: ./asterisk
@@ -46,16 +48,27 @@ services:
     build: ./pihole
     depends_on:
     - config
+    cap_add:
+    - NET_ADMIN
     network_mode: host
-#    volumes:
-#    - 'asterisk:/data/asterisk:ro'
+    ports:
+    - "53:53/tcp"
+    - "53:53/udp"
+    - "67:67/udp"
+    - "80:80"
+    - "443:443"
+    dns:
+    - 127.0.0.1
+    - 1.1.1.1
+    volumes:
+    - 'pihole:/data/pihole:rw'
 
   signal:
     image: agileek/signal-cli:latest
     depends_on:
     - config
     volumes:
-    - 'signal:/config:ro'
+    - 'signal:/config:rw'
 
   openhab2:
     build: ./openhab
