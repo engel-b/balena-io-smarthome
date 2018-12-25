@@ -86,8 +86,8 @@ services:
     - 'openhab:/data/openhab:rw'
 
   status:
-    image: tobilg/mini-webserver
-    expose:
-    - "3000"
+    image: yeasy/simple-web:latest
+    ports:
+    - "3000:80"
     volumes:
     - 'status:/app/public:rw'
