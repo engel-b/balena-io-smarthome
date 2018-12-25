@@ -14,6 +14,16 @@ COPY asterisk/sounds /config/asterisk/sounds
 RUN mkdir -p /config/owfs/conf
 COPY owfs/conf /config/owfs/conf
 
+# mosquitto
+# 'mosquitto:/data/mosquitto:rw'
+RUN mkdir -p /config/mosquitto
+COPY mosquitto /config/mosquitto
+
+# signal
+# 'signal:/data/signal:rw'
+RUN mkdir -p /config/signal
+COPY signal /config/signal
+
 # openhab
 # 'openhab:/data/openhab:rw'
 RUN mkdir -p /config/openhab/addon
