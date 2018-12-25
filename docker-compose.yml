@@ -3,7 +3,9 @@ version: '2'
 # Registration of named volumes
 volumes:
   asterisk:
+  mosquitto:
   owfs:
+  signal:
   openhab:
 
 services:
@@ -27,8 +29,8 @@ services:
     depends_on:
     - config
     network_mode: host
-#    volumes:
-#    - 'asterisk:/data/asterisk:ro'
+    volumes:
+    - 'mosquitto:/data/mosquitto:ro'
 
   owfs:
     build: ./owfs
@@ -47,6 +49,13 @@ services:
     network_mode: host
 #    volumes:
 #    - 'asterisk:/data/asterisk:ro'
+
+  signal:
+    image: agileek/signal-cli:latest
+    depends_on:
+    - config
+    volumes:
+    - 'signal:/config:ro'
 
   openhab2:
     build: ./openhab

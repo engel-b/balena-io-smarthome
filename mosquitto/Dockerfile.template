@@ -1,3 +1,12 @@
 FROM resin/%%BALENA_ARCH%%-alpine:edge
 MAINTAINER Björn Engel<justcoke@gmail.com>
 
+# Install packages
+RUN apk --no-cache add mosquitto
+
+# Expose MQTT port
+EXPOSE 1883
+
+ENV PATH /usr/sbin:$PATH
+
+ENTRYPOINT ["/usr/sbin/mosquitto"]
