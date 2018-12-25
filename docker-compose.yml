@@ -87,7 +87,7 @@ services:
 
   status:
     image: tobilg/mini-webserver
-    ports:
-    - "82:3000"
+    expose:
+    - "3000"
     volumes:
     - 'status:/app/public:rw'
