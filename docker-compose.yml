@@ -22,6 +22,14 @@ services:
     volumes:
     - 'asterisk:/data/asterisk:ro'
 
+  mosquitto:
+    build: ./mosquitto
+    depends_on:
+    - config
+    network_mode: host
+#    volumes:
+#    - 'asterisk:/data/asterisk:ro'
+
   owfs:
     build: ./owfs
     depends_on:
@@ -31,6 +39,14 @@ services:
     - "4304"
     volumes:
     - 'owfs:/data/owfs:ro'
+
+  pihole:
+    build: ./pihole
+    depends_on:
+    - config
+    network_mode: host
+#    volumes:
+#    - 'asterisk:/data/asterisk:ro'
 
   openhab2:
     build: ./openhab

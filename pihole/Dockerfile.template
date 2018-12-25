@@ -1,0 +1,2 @@
+FROM pihole/pihole:latest
+MAINTAINER Björn Engel<justcoke@gmail.com>
