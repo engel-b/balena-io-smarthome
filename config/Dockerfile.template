@@ -1,47 +1,7 @@
 FROM resin/%%BALENA_ARCH%%-alpine:edge
 MAINTAINER Björn Engel<justcoke@gmail.com>
 
-# ssh
-RUN apk add openssh
-
-RUN mkdir /var/run/sshd \
-    && echo 'root:balena' | chpasswd \
-    && sed -i 's/PermitRootLogin without-password/PermitRootLogin yes/' /etc/ssh/sshd_config \
-    && sed -i 's/UsePAM yes/UsePAM no/' /etc/ssh/sshd_config
-
-# asterisk
-# 'asterisk:/data/asterisk:rw'
-RUN mkdir -p /config/asterisk/conf
-COPY asterisk/conf /config/asterisk/conf
-
-RUN mkdir -p /config/asterisk/sounds
-COPY asterisk/sounds /config/asterisk/sounds
-
-# owfs
-# 'owfs:/data/owfs:rw'
-RUN mkdir -p /config/owfs/conf
-COPY owfs/conf /config/owfs/conf
-
-# mosquitto
-# 'mosquitto:/data/mosquitto:rw'
-RUN mkdir -p /config/mosquitto
-COPY mosquitto /config/mosquitto
-
-# signal
-# 'signal:/data/signal:rw'
-RUN mkdir -p /config/signal
-COPY signal /config/signal
-
-# openhab
-# 'openhab:/data/openhab:rw'
-RUN mkdir -p /config/openhab/addon
-COPY openhab/addon /config/openhab/addon
-
-RUN mkdir -p /config/openhab/conf
-COPY openhab/conf /config/openhab/conf
-
-RUN mkdir -p /config/openhab/userdata
-COPY openhab/userdata /config/openhab/userdata
+RUN apk add git
 
 COPY app.sh /app.sh
 RUN chmod 777 /app.sh
