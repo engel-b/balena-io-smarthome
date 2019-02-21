@@ -20,60 +20,59 @@ services:
     - 'mosquitto:/data/mosquitto:rw'
     - 'pihole:/data/pihole:rw'
     - 'status:/data/status:rw'
+    - 'signal:/data/signal:rw'
 
-#    - 'signal:/data/signal:rw'
+#  asterisk:
+#    build: ./asterisk
+#    depends_on:
+#    - config
+#    network_mode: host
+#    volumes:
+#    - 'asterisk:/data/asterisk:ro'
 
-  asterisk:
-    build: ./asterisk
-    depends_on:
-    - config
-    network_mode: host
-    volumes:
-    - 'asterisk:/data/asterisk:ro'
+#  mosquitto:
+#    build: ./mosquitto
+#    depends_on:
+#    - config
+#    network_mode: host
+#    volumes:
+#    - 'mosquitto:/data/mosquitto:ro'
 
-  mosquitto:
-    build: ./mosquitto
-    depends_on:
-    - config
-    network_mode: host
-    volumes:
-    - 'mosquitto:/data/mosquitto:ro'
+#  owfs:
+#    build: ./owfs
+#    depends_on:
+#    - config
+#    network_mode: host
+#    expose:
+#    - "4304"
+#    volumes:
+#    - 'owfs:/data/owfs:ro'
 
-  owfs:
-    build: ./owfs
-    depends_on:
-    - config
-    network_mode: host
-    expose:
-    - "4304"
-    volumes:
-    - 'owfs:/data/owfs:ro'
+#  pihole:
+#    build: ./pihole
+#    depends_on:
+#    - config
+#    cap_add:
+#    - NET_ADMIN
+#    network_mode: host
+#    ports:
+#    - "53:53/tcp"
+#    - "53:53/udp"
+#    - "67:67/udp"
+#    - "80:80"
+#    - "443:443"
+#    dns:
+#    - 127.0.0.1
+#    - 1.1.1.1
+#    volumes:
+#    - 'pihole:/data/pihole:rw'
 
-  pihole:
-    build: ./pihole
-    depends_on:
-    - config
-    cap_add:
-    - NET_ADMIN
-    network_mode: host
-    ports:
-    - "53:53/tcp"
-    - "53:53/udp"
-    - "67:67/udp"
-    - "80:80"
-    - "443:443"
-    dns:
-    - 127.0.0.1
-    - 1.1.1.1
-    volumes:
-    - 'pihole:/data/pihole:rw'
-
-  signal:
-    image: agileek/signal-cli:latest
-    depends_on:
-    - config
-    volumes:
-    - 'signal:/config:rw'
+#  signal:
+#    image: agileek/signal-cli:latest
+#    depends_on:
+#    - config
+#    volumes:
+#    - 'signal:/config:rw'
 
   openhab2:
     build: ./openhab
@@ -82,14 +81,14 @@ services:
     network_mode: host
     tty: true
     ports:
-    - "8080"
-    - "8443"
+    - "8080:8080"
+    - "8443:8443"
     volumes:
     - 'openhab:/data/openhab:rw'
 
-  status:
-    image: yeasy/simple-web:latest
-    ports:
-    - "3000:80"
-    volumes:
-    - 'status:/app/public:rw'
+#  status:
+#    image: yeasy/simple-web:latest
+#    ports:
+#    - "3000:80"
+#    volumes:
+#    - 'status:/app/public:rw'
