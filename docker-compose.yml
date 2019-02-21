@@ -18,9 +18,10 @@ services:
     - 'owfs:/data/owfs:rw'
     - 'openhab:/data/openhab:rw'
     - 'mosquitto:/data/mosquitto:rw'
-    - 'signal:/data/signal:rw'
     - 'pihole:/data/pihole:rw'
     - 'status:/data/status:rw'
+
+#    - 'signal:/data/signal:rw'
 
   asterisk:
     build: ./asterisk
@@ -80,8 +81,9 @@ services:
     - config
     network_mode: host
     tty: true
-    expose:
+    ports:
     - "8080"
+    - "8443"
     volumes:
     - 'openhab:/data/openhab:rw'
 
