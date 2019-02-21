@@ -22,31 +22,31 @@ services:
     - 'status:/data/status:rw'
     - 'signal:/data/signal:rw'
 
-#  asterisk:
-#    build: ./asterisk
-#    depends_on:
-#    - config
-#    network_mode: host
-#    volumes:
-#    - 'asterisk:/data/asterisk:ro'
+  asterisk:
+    build: ./asterisk
+    depends_on:
+    - config
+    network_mode: host
+    volumes:
+    - 'asterisk:/data/asterisk:ro'
 
-#  mosquitto:
-#    build: ./mosquitto
-#    depends_on:
-#    - config
-#    network_mode: host
-#    volumes:
-#    - 'mosquitto:/data/mosquitto:ro'
+  mosquitto:
+    build: ./mosquitto
+    depends_on:
+    - config
+    network_mode: host
+    volumes:
+    - 'mosquitto:/data/mosquitto:ro'
 
-#  owfs:
-#    build: ./owfs
-#    depends_on:
-#    - config
-#    network_mode: host
-#    expose:
-#    - "4304"
-#    volumes:
-#    - 'owfs:/data/owfs:ro'
+  owfs:
+    build: ./owfs
+    depends_on:
+    - config
+    network_mode: host
+    ports:
+    - "4304"
+    volumes:
+    - 'owfs:/data/owfs:ro'
 
 #  pihole:
 #    build: ./pihole
