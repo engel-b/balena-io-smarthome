@@ -13,6 +13,8 @@ volumes:
 services:
   config:
     build: ./config
+    ports:
+    - "2222:22"
     volumes:
     - 'asterisk:/data/asterisk:rw'
     - 'owfs:/data/owfs:rw'
@@ -34,6 +36,8 @@ services:
     build: ./mosquitto
     depends_on:
     - config
+    ports:
+    - "1883:1883"
     network_mode: host
     volumes:
     - 'mosquitto:/data/mosquitto:ro'
@@ -44,7 +48,7 @@ services:
     - config
     network_mode: host
     ports:
-    - "4304"
+    - "4304:4304"
     volumes:
     - 'owfs:/data/owfs:ro'
 

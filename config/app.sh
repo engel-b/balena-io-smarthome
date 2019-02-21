@@ -6,4 +6,10 @@ cp -r /config/openhab/* /data/openhab/.
 cp -r /config/mosquitto/* /data/mosquitto/.
 cp -r /config/signal/* /data/signal/.
 
-exit 0
+/usr/sbin/sshd -p 22 &
+
+echo "This is where your application would start..."
+while : ; do
+  echo "waiting"
+  sleep 60
+done
