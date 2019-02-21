@@ -1,5 +1,6 @@
 FROM openhab/openhab:2.4.0-amd64-alpine
 
 RUN ln -s /data/openhab/addons /openhab/addons
+
 RUN ln -s /data/openhab/conf /openhab/conf
 RUN ln -s /data/openhab/userdata /openhab/userdata
