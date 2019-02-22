@@ -8,7 +8,9 @@ volumes:
   owfs:
   pihole:
   signal:
-  openhab:
+  openhab-addons:
+  openhab-conf:
+  openhab-userdata:
   status:
 
 services:
@@ -18,39 +20,40 @@ services:
     - 'config:/data:rw'
     - 'asterisk:/data/asterisk:rw'
     - 'owfs:/data/owfs:rw'
-    - 'openhab:/data/openhab:rw'
+    - 'openhab-addons:/data/openhab-addons:rw'
+    - 'openhab-conf:/data/openhab-conf:rw'
     - 'mosquitto:/data/mosquitto:rw'
     - 'pihole:/data/pihole:rw'
     - 'status:/data/status:rw'
     - 'signal:/data/signal:rw'
 
-  asterisk:
-    build: ./asterisk
-    depends_on:
-    - config
-    network_mode: host
-    volumes:
-    - 'asterisk:/data/asterisk:ro'
+#  asterisk:
+#    build: ./asterisk
+#    depends_on:
+#    - config
+#    network_mode: host
+#    volumes:
+#    - 'asterisk:/data/asterisk:ro'
 
-  mosquitto:
-    build: ./mosquitto
-    depends_on:
-    - config
-    ports:
-    - "1883:1883"
-    network_mode: host
-    volumes:
-    - 'mosquitto:/data/mosquitto:ro'
+#  mosquitto:
+#    build: ./mosquitto
+#    depends_on:
+#    - config
+#    ports:
+#    - "1883:1883"
+#    network_mode: host
+#    volumes:
+#    - 'mosquitto:/data/mosquitto:ro'
 
-  owfs:
-    build: ./owfs
-    depends_on:
-    - config
-    network_mode: host
-    ports:
-    - "4304:4304"
-    volumes:
-    - 'owfs:/data/owfs:ro'
+#  owfs:
+#    build: ./owfs
+#    depends_on:
+#    - config
+#    network_mode: host
+#    ports:
+#    - "4304:4304"
+#    volumes:
+#    - 'owfs:/data/owfs:ro'
 
 #  pihole:
 #    build: ./pihole
@@ -88,7 +91,9 @@ services:
     - "8080:8080"
     - "8443:8443"
     volumes:
-    - 'openhab:/data/openhab:rw'
+    - 'openhab-addons:/openhab/addons:ro'
+    - 'openhab-conf:/openhab/conf:ro'
+    - 'openhab-userdata:/openhab/userdata:rw'
 
 #  status:
 #    image: yeasy/simple-web:latest
