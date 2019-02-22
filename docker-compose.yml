@@ -6,7 +6,8 @@ volumes:
   asterisk:
   mosquitto:
   owfs:
-  pihole:
+  pihole-config:
+  pihole-dnsmasq-config:
   signal:
   openhab-addons:
   openhab-conf:
