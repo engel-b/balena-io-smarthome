@@ -8,5 +8,5 @@ FROM openhab/openhab:2.4.0-amd64-alpine
 # RUN mv /openhab/userdata /openhab/userdata.orig
 # RUN ln -s /data/openhab/userdata /openhab/userdata
 
-ENTRYPOINT ["sh"]
-CMD ["sh"]
+ENTRYPOINT []
+CMD []
