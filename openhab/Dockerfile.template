@@ -1,12 +1,12 @@
 FROM openhab/openhab:2.4.0-amd64-alpine
 
-#RUN ln -s /data/openhab/addons /openhab/addons
+# RUN ln -s /data/openhab/addons /openhab/addons
 
-#RUN mv /openhab/conf /openhab/conf.orig
-#RUN ln -s /data/openhab/conf /openhab/conf
+# RUN mv /openhab/conf /openhab/conf.orig
+# RUN ln -s /data/openhab/conf /openhab/conf
 
-#RUN mv /openhab/userdata /openhab/userdata.orig
-#RUN ln -s /data/openhab/userdata /openhab/userdata
+# RUN mv /openhab/userdata /openhab/userdata.orig
+# RUN ln -s /data/openhab/userdata /openhab/userdata
 
 ENTRYPOINT ["sh"]
 CMD ["sh"]

@@ -1,5 +1,5 @@
 # STEP 1 build owfs
-FROM resin/%%BALENA_ARCH%%-alpine:edge as owfsbuilder
+FROM balenalib/%%BALENA_ARCH%%-alpine:edge as owfsbuilder
 
 RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories; \
     echo "http://dl-3.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories; \
@@ -22,7 +22,7 @@ RUN cd owfs-code; \
 
 
 # start from scratch
-FROM resin/%%BALENA_ARCH%%-alpine:edge
+FROM balenalib/%%BALENA_ARCH%%-alpine:edge
 MAINTAINER Björn Engel<justcoke@gmail.com>
 
 COPY --from=owfsbuilder /opt/owfs /opt/owfs
