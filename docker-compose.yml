@@ -91,7 +91,7 @@ services:
     - "8080:8080"
     - "8443:8443"
     volumes:
-    - 'openhab-addons:/openhab/addons:ro'
+    - 'openhab-addons:/openhab/addons:rw'
     - 'openhab-conf:/openhab/conf:rw'
     - 'openhab-userdata:/openhab/userdata:rw'
 
