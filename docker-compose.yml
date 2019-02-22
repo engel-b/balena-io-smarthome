@@ -51,9 +51,11 @@ services:
     build: ./owfs
     depends_on:
     - config
+    devices:
+    - "/dev/bus/usb:/dev/bus/usb"
     network_mode: host
     ports:
-    - "4304:4304"
+    - "2121:2121"
     volumes:
     - 'owfs:/data/owfs:ro'
 
