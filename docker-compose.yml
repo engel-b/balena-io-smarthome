@@ -92,7 +92,7 @@ services:
     - "8443:8443"
     volumes:
     - 'openhab-addons:/openhab/addons:ro'
-    - 'openhab-conf:/openhab/conf:ro'
+    - 'openhab-conf:/openhab/conf:rw'
     - 'openhab-userdata:/openhab/userdata:rw'
 
 #  status:
