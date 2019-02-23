@@ -15,19 +15,19 @@ volumes:
   status:
 
 services:
-  config:
-    build: ./config
-    volumes:
-    - 'config:/data:rw'
-    - 'asterisk:/data/asterisk:rw'
-    - 'owfs:/data/owfs:rw'
-    - 'openhab-addons:/data/openhab-addons:rw'
-    - 'openhab-conf:/data/openhab-conf:rw'
-    - 'mosquitto:/data/mosquitto:rw'
-    - 'pihole-config:/data/pihole-config:rw'
-    - 'pihole-dnsmasq-config:/data/pihole-dnsmasq-config:rw'
-    - 'status:/data/status:rw'
-    - 'signal:/data/signal:rw'
+#  config:
+#    build: ./config
+#    volumes:
+#    - 'config:/data:rw'
+#    - 'asterisk:/data/asterisk:rw'
+#    - 'owfs:/data/owfs:rw'
+#    - 'openhab-addons:/data/openhab-addons:rw'
+#    - 'openhab-conf:/data/openhab-conf:rw'
+#    - 'mosquitto:/data/mosquitto:rw'
+#    - 'pihole-config:/data/pihole-config:rw'
+#    - 'pihole-dnsmasq-config:/data/pihole-dnsmasq-config:rw'
+#    - 'status:/data/status:rw'
+#    - 'signal:/data/signal:rw'
 
 #  asterisk:
 #    build: ./asterisk
