@@ -51,8 +51,8 @@ services:
     build: ./owfs
 #    depends_on:
 #    - config
-    devices:
-    - "/dev/bus/usb:/dev/bus/usb"
+#    devices:
+#    - "/dev/bus/usb:/dev/bus/usb"
     network_mode: host
     ports:
     - "2121:2121"
