@@ -61,18 +61,22 @@ services:
 
   pihole:
     build: ./pihole
-    depends_on:
-    - config
-    cap_add:
-    - NET_ADMIN
     privileged: true
-    network_mode: host
-    dns:
-    - 127.0.0.1
-    - 1.1.1.1
     volumes:
-      - 'pihole-config:/etc/pihole:rw'
-      - 'pihole-dnsmasq-config:/etc/dnsmasq.d:rw'
+    - 'pihole-config:/etc/pihole'
+    - 'pihole-dnsmasq-config:/etc/dnsmasq.d'
+    cap_add:
+    - 'NET_ADMIN'
+    dns:
+    - '127.0.0.1'
+    - '1.1.1.1'
+    network_mode: host
+
+  unbound:
+    build: ./unbound
+    ports:
+    - '1053:53/tcp'
+    - '1053:53/udp'
 
 #  signal:
 #    image: agileek/signal-cli:latest
