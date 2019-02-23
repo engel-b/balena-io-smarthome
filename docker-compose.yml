@@ -29,13 +29,13 @@ services:
     - 'status:/data/status:rw'
     - 'signal:/data/signal:rw'
 
-  asterisk:
-    build: ./asterisk
-    depends_on:
-    - config
-    network_mode: host
-    volumes:
-    - 'asterisk:/data/asterisk:ro'
+#  asterisk:
+#    build: ./asterisk
+#    depends_on:
+#    - config
+#    network_mode: host
+#    volumes:
+#    - 'asterisk:/data/asterisk:ro'
 
   mosquitto:
     build: ./mosquitto
@@ -47,17 +47,17 @@ services:
     volumes:
     - 'mosquitto:/data/mosquitto:ro'
 
-  owfs:
-    build: ./owfs
-    depends_on:
-    - config
-    devices:
-    - "/dev/bus/usb:/dev/bus/usb"
-    network_mode: host
-    ports:
-    - "2121:2121"
-    volumes:
-    - 'owfs:/data/owfs:ro'
+#  owfs:
+#    build: ./owfs
+#    depends_on:
+#    - config
+#    devices:
+#    - "/dev/bus/usb:/dev/bus/usb"
+#    network_mode: host
+#    ports:
+#    - "2121:2121"
+#    volumes:
+#    - 'owfs:/data/owfs:ro'
 
   pihole:
     build: ./pihole
@@ -85,19 +85,19 @@ services:
 #    volumes:
 #    - 'signal:/config:rw'
 
-  openhab2:
-    build: ./openhab
-    depends_on:
-    - config
-    network_mode: host
-    tty: true
-    ports:
-    - "8080:8080"
-    - "8443:8443"
-    volumes:
-    - 'openhab-addons:/openhab/addons:rw'
-    - 'openhab-conf:/openhab/conf:rw'
-    - 'openhab-userdata:/openhab/userdata:rw'
+#  openhab2:
+#    build: ./openhab
+#    depends_on:
+#    - config
+#    network_mode: host
+#    tty: true
+#    ports:
+#    - "8080:8080"
+#    - "8443:8443"
+#    volumes:
+#    - 'openhab-addons:/openhab/addons:rw'
+#    - 'openhab-conf:/openhab/conf:rw'
+#    - 'openhab-userdata:/openhab/userdata:rw'
 
 #  status:
 #    image: yeasy/simple-web:latest
