@@ -91,19 +91,19 @@ services:
 #    volumes:
 #    - 'signal:/config:rw'
 
-#  openhab2:
-#    build: ./openhab
+  openhab2:
+    build: ./openhab
 #    depends_on:
 #    - config
-#    network_mode: host
-#    tty: true
-#    ports:
-#    - "8080:8080"
-#    - "8443:8443"
-#    volumes:
-#    - 'openhab-addons:/openhab/addons:rw'
-#    - 'openhab-conf:/openhab/conf:rw'
-#    - 'openhab-userdata:/openhab/userdata:rw'
+    network_mode: host
+    tty: true
+    ports:
+    - "8080:8080"
+    - "8443:8443"
+    volumes:
+    - 'openhab-addons:/openhab/addons:rw'
+    - 'openhab-conf:/openhab/conf:rw'
+    - 'openhab-userdata:/openhab/userdata:rw'
 
 #  status:
 #    image: yeasy/simple-web:latest
