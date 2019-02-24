@@ -1,37 +1,13 @@
-# STEP 1 build owfs
-FROM balenalib/%%BALENA_ARCH%%-alpine:latest-build as owfsbuilder
+FROM balenalib/amd64-debian:jessie
 
-RUN echo "http://dl-3.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories; \
-    echo "http://dl-3.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories; \
-    apk update; \
-    apk add alpine-keys; \
-    apk add bash automake make git rsync tar python py-setuptools \
-       gcc g++ binutils libgcc libstdc++ libgfortran \
-       readline readline-dev python-dev dev86 \
-       m4 libtool autoconf swig fuse fuse-dev perl-dev \
-       linux-headers libftdi1-dev
+RUN apt-get update && apt-get install -y \
+	ow-shell \
+	owserver  && \
+	rm -rf /var/lib/apt/lists/*
 
-RUN git clone https://github.com/owfs/owfs owfs-code
-
-RUN cd owfs-code; \
-    git pull; \
-    ./bootstrap; \
-    ./configure; \
-    make; \
-    make install
-
-
-# start from scratch
-FROM balenalib/%%BALENA_ARCH%%-alpine:latest-run
-MAINTAINER Björn Engel<justcoke@gmail.com>
-
-COPY --from=owfsbuilder /opt/owfs /opt/owfs
-RUN ln -s /data/owfs/conf/owfs.conf /etc/owfs.conf
+COPY owfs.conf /etc/owfs.conf
 COPY app.sh /app.sh
-RUN chmod 777 /app.sh
-
-RUN apk add --update fuse libftdi1 libusb
+RUN chmod +x /app.sh
 
 EXPOSE 4304
-
 CMD ["/app.sh"]
