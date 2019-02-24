@@ -16,7 +16,6 @@ volumes:
 
 services:
   config:
-    name: "config"
     build: ./config
     volumes:
     - 'config:/data:rw'
@@ -31,7 +30,6 @@ services:
     - 'signal:/data/signal:rw'
 
   asterisk:
-    name: "asterisk"
     build: ./asterisk
 #    depends_on:
 #    - config
@@ -40,7 +38,6 @@ services:
     - 'asterisk:/data/asterisk:ro'
 
   mosquitto:
-    name: "mosquitto"
     build: ./mosquitto
 #    depends_on:
 #    - config
@@ -51,7 +48,6 @@ services:
     - 'mosquitto:/data/mosquitto:ro'
 
   owfs:
-    name: "owfs"
     build: ./owfs
 #    depends_on:
 #    - config
@@ -64,7 +60,6 @@ services:
     - 'owfs:/data/owfs:ro'
 
   pihole:
-    name: "pihole"
     build: ./pihole
     privileged: true
     volumes:
@@ -84,7 +79,6 @@ services:
     network_mode: host
 
   unbound:
-    name: "unbound"
     build: ./unbound
     ports:
     - '1053:53/tcp'
@@ -98,7 +92,6 @@ services:
 #    - 'signal:/config:rw'
 
   openhab2:
-    name: "openhab2"
     build: ./openhab
 #    depends_on:
 #    - config
