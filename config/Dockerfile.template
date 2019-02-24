@@ -1,9 +1,9 @@
 FROM balenalib/%%BALENA_ARCH%%-alpine:edge
 MAINTAINER Björn Engel<justcoke@gmail.com>
 
-RUN apk add git
+RUN apk add git openssh
 
 COPY app.sh /app.sh
-RUN chmod 777 /app.sh
+RUN chmod +x /app.sh
 
 CMD ["/app.sh"]

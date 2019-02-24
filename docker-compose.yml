@@ -2,7 +2,6 @@ version: '2'
 
 # Registration of named volumes
 volumes:
-  config:
   asterisk:
   mosquitto:
   owfs:
@@ -18,7 +17,6 @@ services:
   config:
     build: ./config
     volumes:
-    - 'config:/data:rw'
     - 'asterisk:/data/asterisk:rw'
     - 'owfs:/data/owfs:rw'
     - 'openhab-addons:/data/openhab-addons:rw'
