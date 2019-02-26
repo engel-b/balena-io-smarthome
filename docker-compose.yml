@@ -12,8 +12,7 @@ volumes:
   openhab-conf:
   openhab-userdata:
   status:
-  unbound-a-records:
-  unbound-conf:
+  unbound:
 
 services:
   config:
