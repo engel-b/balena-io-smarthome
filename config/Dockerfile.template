@@ -1,7 +1,10 @@
 FROM balenalib/%%BALENA_ARCH%%-alpine:edge
 MAINTAINER Björn Engel<justcoke@gmail.com>
 
-RUN apk add git openssh
+RUN apk add git openssh rsync
+
+RUN git clone ssh://git@git.familie-engel.info:/volume1/homes/git/repos/smarthome-config
+RUN cd smarthome-config
 
 COPY app.sh /app.sh
 RUN chmod +x /app.sh
