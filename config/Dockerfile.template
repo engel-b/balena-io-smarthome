@@ -3,9 +3,6 @@ MAINTAINER Björn Engel<justcoke@gmail.com>
 
 RUN apk add git openssh rsync
 
-RUN git clone ssh://git@192.168.150.101:/volume1/homes/git/repos/smarthome-config
-RUN cd smarthome-config
-
 COPY app.sh /app.sh
 RUN chmod +x /app.sh
 
