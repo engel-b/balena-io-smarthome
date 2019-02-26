@@ -91,9 +91,6 @@ COPY --from=unbound /opt/ /opt/
 # work in unbound root directory
 WORKDIR /opt/unbound/etc/unbound
 
-# copy default config file
-COPY a-records.conf unbound.conf ./
-
 # copy unbound script
 COPY unbound.sh /
 
