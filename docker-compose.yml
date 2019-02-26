@@ -12,6 +12,8 @@ volumes:
   openhab-conf:
   openhab-userdata:
   status:
+  unbound-a-records:
+  unbound-conf:
 
 services:
   config:
@@ -26,6 +28,7 @@ services:
     - 'pihole-dnsmasq-config:/data/pihole-dnsmasq-config:rw'
     - 'status:/data/status:rw'
     - 'signal:/data/signal:rw'
+    - 'unbound:/data/unbound:rw'
 
   asterisk:
     build: ./asterisk
@@ -55,7 +58,7 @@ services:
     ports:
     - "2121:2121"
     volumes:
-    - 'owfs:/data/owfs:ro'
+    - 'owfs:/etc/owfs:ro'
 
   pihole:
     build: ./pihole
@@ -78,6 +81,8 @@ services:
 
   unbound:
     build: ./unbound
+    volumes:
+    - 'unbound:/opt/unbound/etc/unbound'
     ports:
     - '1053:53/tcp'
     - '1053:53/udp'

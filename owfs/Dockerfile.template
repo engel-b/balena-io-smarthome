@@ -6,7 +6,6 @@ RUN apt-get update && apt-get install -y \
 	owserver  && \
 	rm -rf /var/lib/apt/lists/*
 
-COPY owfs.conf /etc/owfs.conf
 COPY app.sh /app.sh
 RUN chmod +x /app.sh
 
