@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# set timezone with TZ (eg. TZ=America/Toronto)
+if [ -n "${TZ}" ]
+then
+	ln -snf "/usr/share/zoneinfo/${TZ}" /etc/localtime
+	echo "${TZ}" > /etc/timezone
+fi
+
 # Start the first process: owserver
 /usr/bin/owserver -c /etc/owfs/owfs.conf
 status=$?
