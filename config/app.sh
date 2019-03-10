@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir -p ~/.ssh && chmod 600 ~/.ssh && cat ${SSH_PUBLIC_KEY} >  ~/.ssh/authorized_keys
+
 # set timezone with TZ (eg. TZ=America/Toronto)
 if [ -n "${TZ}" ]
 then
