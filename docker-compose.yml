@@ -51,10 +51,10 @@ services:
     build: ./owfs
 #    depends_on:
 #    - config
-    devices:
-    - "/dev/bus/usb/004/003:/dev/bus/usb/004/003"
-    - "/dev/bus/usb/004/004:/dev/bus/usb/004/004"
-    - "/dev/bus/usb/004/005:/dev/bus/usb/004/005"
+#    devices:
+#    - "/dev/bus/usb/004/003:/dev/bus/usb/004/003"
+#    - "/dev/bus/usb/004/004:/dev/bus/usb/004/004"
+#    - "/dev/bus/usb/004/005:/dev/bus/usb/004/005"
     network_mode: host
     ports:
     - "2121:2121"
